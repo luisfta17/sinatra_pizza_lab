@@ -29,12 +29,20 @@ end
 
 
 # UPDATE existing orders
+get "/pizza_orders/:id/update" do
+  @order_to_update = PizzaOrder.find(params[:id].to_i)
+  erb(:update)
+end
+
+post "/pizza_orders/:id/updated" do
+  @order_to_update = PizzaOrder.new(params)
+  @order_to_update.update()
+  redirect "/pizza_orders"
+  
+end
+
 
 # DELETE orders
-
-get '/pizza_orders/delete_confirmation' do
-  erb( :destroy )
-end
 
 post "/pizza_orders/:id/delete" do
   @order_to_delete = PizzaOrder.find(params[:id].to_i)
