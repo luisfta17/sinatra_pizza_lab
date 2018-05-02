@@ -6,8 +6,12 @@
   <label for="pizza-select">Select a pizza:</label>
     <select id="pizza-select" name="topping">
       <option value="<%= @order_to_update.topping  %>"><%= @order_to_update.topping %></option>
+      <% if @order_to_update.topping != "Margherita"%>
       <option value="Margherita">Margherita</option>
+      <% end %>
+      <% if @order_to_update.topping != "Calzone"%>
       <option value="Calzone">Calzone</option>
+      <% end %>
     </select>
   <label for="quantity">Quantity:</label>
     <input type="number" name="quantity" id="quantity" value="<%= @order_to_update.quantity %>">
